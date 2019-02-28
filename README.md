@@ -1,0 +1,1 @@
+项目开始前：2018-04-15，微信官方发布了一篇公告——<<[https://developers.weixin.qq.com/community/develop/doc/0000a26e1aca6012e896a517556c01](https://developers.weixin.qq.com/community/develop/doc/0000a26e1aca6012e896a517556c01 "小程序与小游戏获取用户信息接口调整，请开发者注意升级。")>>。公告主要内容：从2018年4月30日开始，小程序与小游戏的体验版、开发版调用 wx.getUserInfo 接口，将无法弹出授权询问框，默认调用失败。正式版暂不受影响。
