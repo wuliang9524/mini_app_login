@@ -1,8 +1,6 @@
 // pages/mine/index/index.js
 const app = getApp();
 const common = require('../../../utils/common.js');
-const wxpromise = require('../../../utils/wxpromise.js');
-
 
 Page({
 
@@ -31,39 +29,6 @@ Page({
       },
       {
         'id': 2,
-        'active': false,
-        'text': '同城',
-        'openType': 'redirect',
-        'url': '/pages/index/index',
-        'iconUrl': {
-          'active': '/images/icon/tabBar/grzx_sel.png',
-          'normal': '/images/icon/tabBar/grzx_nor.png'
-        },
-      },
-      {
-        'id': 3,
-        'active': false,
-        'text': '发布',
-        'openType': 'redirect',
-        'url': '/pages/index/index',
-        'iconUrl': {
-          'active': '/images/icon/tabBar/grzx_sel.png',
-          'normal': '/images/icon/tabBar/grzx_nor.png'
-        },
-      },
-      {
-        'id': 4,
-        'active': false,
-        'text': '消息',
-        'openType': 'redirect',
-        'url': '/pages/index/index',
-        'iconUrl': {
-          'active': '/images/icon/tabBar/grzx_sel.png',
-          'normal': '/images/icon/tabBar/grzx_nor.png'
-        },
-      },
-      {
-        'id': 5,
         'active': true,
         'text': '我的',
         'openType': 'redirect',
@@ -139,7 +104,7 @@ Page({
    */
   onLoad: function(options) {
     var _this = this;
-    
+
     app.pageInit(this).then(function(res) {
       //已经登录，判断是否授权scope.userInfo
       if (!res.authsetting['scope.userInfo']) {
@@ -162,8 +127,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
+  onShow: function(options) {
+    console.log(options);
   },
 
   /**

@@ -1,6 +1,9 @@
 // pages/login/login.js
 const app = getApp();
-const wxpromise = require('../../utils/wxpromise.js');
+import {
+  wxapi,
+  wxsetData
+} from '../../utils/wxapi.js';
 
 Page({
   /**

@@ -1,6 +1,6 @@
-const wxpromise = require('./utils/wxpromise.js');
 import {
-  wxapi
+  wxapi,
+  wxsetData
 } from './utils/wxapi.js';
 
 //app.js
@@ -15,7 +15,7 @@ App({
         wxapi('getSetting').then(function(setting) {
           _this.gData.logined = true;
           _this.gData.userinfo = res;
-          _this.gData.authsetting = setting;
+          _this.gData.authsetting = setting.authSetting;
 
           //执行页面定义的回调方法
           (_this.loginedCb && typeof(_this.loginedCb) === 'function') && _this.loginedCb();
@@ -120,22 +120,25 @@ App({
   /**
    * 小程序页面初始化
    * @param {Object}  pageObj 小程序页面对象Page
+   * @param {Boolean} needAuth  是否检验用户授权(scope.userInfo)
    * @return {Object}         返回Promise对象，resolve方法执行登录成功后的回调函数，reject方法是登录失败后的回调
    */
-  pageInit: function(pageObj) {
+  pageInit: function(pageObj, needAuth = false) {
     var _this = this;
     return new Promise((resolve, reject) => {
       _this.pageGetLoginInfo(pageObj).then(function(res) {
-        // console.log(_this.gData.logined);
+        console.log(_this.gData.logined);
         if (res.logined === true) {
-          //验证已经登录执行回调，回调中一般根据需求验证是否需要授权
-          resolve(res);
+          if (needAuth && (typeof res.authsetting['scope.userInfo'] === 'undefined') && res.authsetting['scope.userInfo'] == true) {
+            
+          } else {
+            //登录成功、无需授权
+            resolve(res);
+          }
         } else {
-          wx.showModal({
-            title: 'Error',
-            content: 'Fail to login.Please feedback to manager.',
+          reject({
+            'errMsg': 'Fail to login.Please feedback to manager.'
           });
-          reject();
         }
       });
     });
@@ -148,22 +151,23 @@ App({
   pageGetLoginInfo: function(pageObj) {
     var _this = this;
     return new Promise((resolve, reject) => {
-      // console.log(_this.gData.logined);
+      console.log(_this.gData.logined);
       if (_this.gData.logined == true) {
-        wxpromise.PSetData(pageObj, {
+        wxsetData(pageObj, {
           'logined': _this.gData.logined,
           'authsetting': _this.gData.authsetting,
           'userinfo': _this.gData.userinfo
         }).then(function(data) {
           resolve(data);
         });
+
       } else {
         /**
          * 小程序注册时，登录并发起网络请求，请求可能会在 pageObj.onLoad 之后才返回数据
          * 这里加入loginedCb回调函数防止，回调方法会在接收到请求后台返回的数据后执行，详看app.onLaunch()
          */
         _this.loginedCb = () => {
-          wxpromise.PSetData(pageObj, {
+          wxsetData(pageObj, {
             'logined': _this.gData.logined,
             'authsetting': _this.gData.authsetting,
             'userinfo': _this.gData.userinfo
