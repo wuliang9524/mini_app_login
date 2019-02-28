@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<import src="/pages/common/tabBar/tabBar.wxml" />
+
+<view class="container">
+  <view>首页</view>
+</view>
+
+<!-- 置底导航栏 -->
+<template is="tabBar" data="{{tabBar}}" />

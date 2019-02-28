@@ -1,0 +1,113 @@
+/* 
+ * 定义箭头样式类(> < ∨ ∧)
+ * 命名规则: 
+ * 1.颜色名称命名法(颜色名称去元音字母)
+ * bg-rd(red)
+ * bg-rng(orange)
+ * bg-yllw(yellow)
+ * 
+ * 2.颜色RGB值命名法(颜色RGB的六位值命名)
+ * bg-e5e5e5(#e5e5e5)
+ * bg-3296fa(#3296fa)
+ * bg-ffffff(#ffffff)
+ * bg-fff(#fff) 
+ */
+
+.rrw {
+  width: 14rpx;
+  height: 14rpx;
+  border-top: 2rpx solid #666;
+  border-right: 2rpx solid #666;
+  transform: rotate(45deg);
+}
+
+/* 
+ * 箭头大小
+ * 命名规则
+ * .rrw.rrwsz-x(width:x rpx;height:x rpx;)
+ */
+
+.rrw.rrwsz-10 {
+  width: 10rpx;
+  height: 10rpx;
+}
+
+.rrw.rrwsz-12 {
+  width: 12rpx;
+  height: 12rpx;
+}
+
+.rrw.rrwsz-14 {
+  width: 14rpx;
+  height: 14rpx;
+}
+
+.rrw.rrwsz-16 {
+  width: 16rpx;
+  height: 16rpx;
+}
+
+.rrw.rrwsz-18 {
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.rrw.rrwsz-20 {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+.rrw.rrwsz-22 {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.rrw.rrwsz-24 {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+/* 
+ * 箭头颜色
+ * 命名规则
+ * 1.颜色名称命名法(颜色名称去元音字母)
+ * .rrw.rrwclr-rd(red)
+ * 
+ * 2.颜色Hex值命名法(颜色Hex的六位值命名)
+ * .rrw.rrwclr-666(#666)
+ * .rrw.rrwclr-3296fa(#3296fa)
+ */
+
+.rrw.rrwclr-666 {
+  border-color: #666;
+}
+
+.rrw.rrwclr-rd {
+  border-color: red;
+}
+
+/* 
+ * 箭头方向
+ * 命名规则
+ * 
+ * .rrw.rrwdrct-up
+ * .rrw.rrwdrct-dn
+ * .rrw.rrwdrct-lt
+ * .rrw.rrwdrct-rt
+ */
+
+.rrw.rrwdrct-up {
+  transform: rotate(-45deg);
+}
+
+.rrw.rrwdrct-dn {
+  transform: rotate(135deg);
+}
+
+.rrw.rrwdrct-lt {
+  transform: rotate(-135deg);
+}
+
+.rrw.rrwdrct-rt {
+  transform: rotate(45deg);
+}

@@ -1,0 +1,58 @@
+/* 定义字体大小样式类 START */
+.fntsz14 {
+  font-size: 14rpx;
+}
+
+.fntsz16 {
+  font-size: 16rpx;
+}
+
+.fntsz18 {
+  font-size: 18rpx;
+}
+
+.fntsz20 {
+  font-size: 20rpx;
+}
+
+.fntsz22 {
+  font-size: 22rpx;
+}
+
+.fntsz24 {
+  font-size: 24rpx;
+}
+
+.fntsz26 {
+  font-size: 26rpx;
+}
+
+.fntsz28 {
+  font-size: 28rpx;
+}
+
+.fntsz30 {
+  font-size: 30rpx;
+}
+
+.fntsz32 {
+  font-size: 32rpx;
+}
+
+.fntsz34 {
+  font-size: 34rpx;
+}
+
+.fntsz36 {
+  font-size: 36rpx;
+}
+
+.fntsz38 {
+  font-size: 38rpx;
+}
+
+.fntsz40 {
+  font-size: 40rpx;
+}
+
+/* 定义字体大小样式类 END */

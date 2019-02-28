@@ -1,0 +1,57 @@
+/* 
+ * 定义背景颜色样式类
+ * 命名规则: 
+ * 1.颜色名称命名法(颜色名称去元音字母)
+ * bg-rd(red)
+ * bg-rng(orange)
+ * bg-yllw(yellow)
+ * 
+ * 2.颜色Hex值命名法(颜色Hex的六位值命名)
+ * bg-e5e5e5(#e5e5e5)
+ * bg-3296fa(#3296fa)
+ * bg-ffffff(#ffffff)
+ * bg-fff(#fff) 
+ */
+.bg-rd {
+  background: red;
+}
+
+.bg-rng {
+  background: orange;
+}
+
+.bg-yllw {
+  background: yellow;
+}
+
+.bg-grn {
+  background: green;
+}
+
+.bg-bl {
+  background: blue;
+}
+
+.bg-blck {
+  background: black;
+}
+
+.bg-wht {
+  background: white;
+}
+
+.bg-gry {
+  background: gray;
+}
+
+.bg-f2f2f2 {
+  background: #f2f2f2;
+}
+
+.bg-ffffff {
+  background: #ffffff;
+}
+
+.bg-fff {
+  background: #fff;
+}

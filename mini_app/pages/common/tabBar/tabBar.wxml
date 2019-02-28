@@ -1,0 +1,7 @@
+<template name='tabBar'>
+  <view class='tab-bar'>
+    <navigator wx:for="{{tabBar}}" open-type='{{item.openType}}' url='{{item.url}}' class='item {{item.active ? "active" : ""}}' style='width:calc(100% / {{tabBar.length}});'>
+      <image src='{{item.active ? item.iconUrl.active : item.iconUrl.normal}}'></image>{{item.text}}
+    </navigator>
+  </view>
+</template>

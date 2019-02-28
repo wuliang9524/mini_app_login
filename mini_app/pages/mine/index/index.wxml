@@ -1,0 +1,31 @@
+<!--pages/mine/index/index.wxml-->
+<import src="/pages/common/tabBar/tabBar.wxml" />
+
+<view class='container fntsz28'>
+  <view class='top-box'></view>
+  <view wx:if="{{menuSet}}" class='content-box fntsz24'>
+    <view wx:if="{{menuSet.row}}" class='item-box-row'>
+      <block wx:for="{{menuSet.row}}">
+        <navigator open-type='{{item.openType}}' url='{{item.url}}' class='item bg-fff'>
+          <image src='{{item.iconUrl}}'></image>
+          <text>{{item.text}}</text>
+        </navigator>
+      </block>
+    </view>
+
+    <block wx:if="{{menuSet.column}}">
+      <block wx:for="{{menuSet.column}}" wx:for-item="i" wx:for-index="k">
+        <view class='item-box {{k}} bg-fff'>
+          <view wx:for="{{i}}" wx:for-item="ii" wx:for-index="kk" class='item {{kk}}'>
+            <image src='{{ii.iconUrl}}'></image>
+            <text>{{ii.text}}</text>
+            <icon class='rrw rrwsz-14 rrwdrct-left'></icon>
+          </view>
+        </view>
+      </block>
+    </block>
+  </view>
+</view>
+
+<!-- 置底导航栏 -->
+<template is="tabBar" data="{{tabBar}}" />
