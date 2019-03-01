@@ -9,7 +9,7 @@ Page({
    */
   data: {
     'logined': false,
-    'authsetting': {},
+    'authsetting': null,
     'userinfo': null,
     /**
      * 底部导航栏数据，
@@ -105,14 +105,16 @@ Page({
   onLoad: function(options) {
     var _this = this;
 
-    app.pageInit(this).then(function(res) {
-      //已经登录，判断是否授权scope.userInfo
-      if (!res.authsetting['scope.userInfo']) {
-        //无授权，跳转到授权页面
-        common.navigateTo('/pages/auth/auth');
-      }
-    }, function() {
+    app.pageOnLoadInit(this, true).then(function(res) {
+      //这里写验证登录成功后且无需验证授权 需要执行的逻辑
+      //若还需验证授权成功才执行的逻辑需写在onShow方法里面
+
+    }, function(error) {
       //登录失败
+      wx.showModal({
+        title: 'Error',
+        content: error.errMsg ? error.errMsg : 'Fail to login.Please feedback to manager.',
+      })
       return false;
     });
   },
@@ -127,8 +129,17 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function(options) {
-    console.log(options);
+  onShow: function() {
+    var _this = this;
+
+    app.pageOnShowInit(this).then(function() {
+      //这里写验证授权成功后 需要执行的逻辑
+      
+    }, function() {
+      //用户没有授权
+      console.warn('Auth scope.userInfo is unable.');
+      return false;
+    });
   },
 
   /**

@@ -8,7 +8,7 @@ import {
 Page({
   /**
    * 注意：当前页面只是引导用户进行授权，与登录毫无关系，
-   *      跳转到当前页面前，务必在source page中调用App.pageInit()，
+   *      跳转到当前页面前，务必在 来源page 中调用App.pageOnLoadInit()，
    * 
    * 解析：小程序的登录是调用wx.login直接进行登录（无需用户同意score.userInfo授权），通过code请求后台返回后台服务器的自定义登录态，
    *      小程序的授权是有时候我们需要拿到用户的一些开放信息（后台逻辑需要），这里登录和授权是完全区分开来的，登录是用户进来小程序程序即可跑下去，授权则是用户点击同意授权后，通过接口把得到
@@ -30,59 +30,27 @@ Page({
    * getUserinfo回调函数
    */
   bindGetUserinfo: function(e) {
-    console.log(e);
     var data = e.detail;
-    console.log(data);
     if (data.errMsg === "getUserInfo:ok") {
-      wxpromise.PRequest('Post', app.gData.api.request + '/api/User/thirdauth', {
-        'platform': 'miniwechat',
-        'token': app.gData.userinfo.token,
-        'encryptedData': data.encryptedData,
-        'iv': data.iv,
-      }, {
-        'Content-type': 'application/x-www-form-urlencoded'
-      }).then(function(res) {
-        var loginKey = 'loginInfo';
-        if (res.code == 1) {
-          wxpromise.PSetStorage(loginKey, res.data.userinfo).then(function() {
-            //生成新缓存成功
-            app.gData.authsetting['scope.userInfo'] = true;
-            app.gData.userinfo = res.data.userinfo;
-            var pages = getCurrentPages();
-            var currPage = pages[pages.length - 1]; //当前页面
-            var prevPage = pages[pages.length - 2]; //上一个页面
+      app.exeAuth('loginInfo', data).then(function(res) {
+        var pages = getCurrentPages();
+        var prevPage = pages[pages.length - 2]; //上一个页面
 
-            prevPage.setData({
-              'userinfo': res.data.userinfo,
-              'authsetting.scope\\.userInfo': true
-            }, function() {
-              wx.navigateBack({
-                delta: 1,
-                fail: function(error) {
-                  wx.showModal({
-                    title: 'Error',
-                    content: error.errMsg ? error.errMsg : 'Fail to navigate back.',
-                  });
-                  return false;
-                }
-              })
-            });
-          }).catch(function(error) {
-            console.log(error);
-            wx.showModal({
-              title: 'Error',
-              content: error.errMsg ? error.errMsg : 'Fail to set storage.',
-            });
-            return false;
+        prevPage.setData({
+          'userinfo': res,
+          'authsetting.scope\\.userInfo': true
+        }, function() {
+          wx.navigateBack({
+            delta: 1
           });
-        } else {
-          //授权操作失败
-          wx.showModal({
-            title: 'Error',
-            content: 'Fail to authorize.Please feedback to manager.',
-          });
-          return false;
-        }
+        });
+
+      }).catch(function(error) {
+        console.error(error);
+        wx.showModal({
+          title: 'Error',
+          content: error.errMsg,
+        })
       });
     } else {
       return false;
