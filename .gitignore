@@ -1,3 +1,4 @@
 /frontend/mini_images/*
 /backend/application/admin/command/Install/*.lock
 /backend/runtime/*
+/backend/.vscode
