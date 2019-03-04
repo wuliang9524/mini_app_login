@@ -146,7 +146,7 @@ App({
         if (res.statusCode === 200 || res.data.code === 1) {
           //更新app.gData中的数据
           _this.gData.authsetting['scope.userInfo'] = true;
-          _this.gData.userinfo = res.data.userinfo;
+          _this.gData.userinfo = res.data.data.userinfo;
 
           //更新自定义登录态的缓存数据，防止再次进入小程序时读取到旧的缓存数据，这里让它异步执行即可，
           //倘若异步执行的结果失败，直接清除自定义登录态缓存，再次进入小程序时系统会自动重新登录生成新的
@@ -223,7 +223,7 @@ App({
     var _this = this;
     return new Promise((resolve, reject) => {
       _this.pageGetLoginInfo(pageObj).then(function(res) {
-        console.log(_this.gData.logined);
+        // console.log(_this.gData.logined);
         if (res.logined === true) {
           //登录成功、无需授权
           resolve(res);
