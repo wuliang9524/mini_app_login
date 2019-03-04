@@ -2,7 +2,16 @@
 <import src="/pages/common/tabBar/tabBar.wxml" />
 
 <view class='container fntsz28'>
-  <view class='top-box'></view>
+  <view class='top-box bg-rng'>
+    <view class='userinfo-box'>
+      <image src='{{userinfo.avatar ? userinfo.avatar : "/mini_images/user_avatar/avatar.png"}}'></image>
+      <view class='info-box'>
+        <view class='nickname'>{{userinfo.nickname}}</view>
+        <text class='update-info bg-wht fntsz20'>更新资料</text>
+      </view>
+
+    </view>
+  </view>
   <view wx:if="{{menuSet}}" class='content-box fntsz24'>
     <view wx:if="{{menuSet.row}}" class='item-box-row'>
       <block wx:for="{{menuSet.row}}">

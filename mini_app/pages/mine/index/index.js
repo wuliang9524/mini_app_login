@@ -45,7 +45,7 @@ Page({
      */
     'menuSet': {
       'row': [{
-          'text': '我的约拍',
+          'text': '我的记录',
           'openType': 'navigate',
           'url': '/pages/mine/index/index',
           'iconUrl': '/images/icon/save_b.png',
@@ -65,15 +65,7 @@ Page({
       ],
       'column': {
         'main': [{
-            'text': '我的麻豆',
-            'iconUrl': '/images/icon/save_b.png',
-          },
-          {
-            'text': '实名认证',
-            'iconUrl': '/images/icon/save_b.png',
-          },
-          {
-            'text': '信用担保',
+            'text': '我的积分',
             'iconUrl': '/images/icon/save_b.png',
           },
         ],
@@ -134,7 +126,7 @@ Page({
 
     app.pageOnShowInit(this).then(function() {
       //这里写验证授权成功后 需要执行的逻辑
-      
+
     }, function() {
       //用户没有授权
       console.warn('Auth scope.userInfo is unable.');
