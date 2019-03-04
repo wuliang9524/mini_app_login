@@ -1,1 +1,2 @@
-/mini_app/mini_images/*
+/frontend/mini_images/*
+/backend/application/admin/command/Install/*.lock
