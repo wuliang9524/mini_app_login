@@ -53,6 +53,11 @@ Page({
         })
       });
     } else {
+      wx.showModal({
+        title: 'Warning',
+        content: 'Please permit to authorize.',
+        showCancel: false
+      })
       return false;
     }
   },
