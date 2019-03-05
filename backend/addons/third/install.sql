@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `__PREFIX__third`;
 CREATE TABLE `__PREFIX__third` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '会员ID',

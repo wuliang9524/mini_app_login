@@ -410,9 +410,15 @@ class Auth
 
     /**
      * 获取会员基本信息
+     *
+     * @param [Boolean] $force  是否强制刷新user模型
+     * @return void
      */
-    public function getUserinfo()
+    public function getUserinfo($force)
     {
+        if($force){
+            $this->_user = User::get($this->_user->id);
+        }
         $data = $this->_user->toArray();
         $allowFields = $this->getAllowFields();
         $userinfo = array_intersect_key($data, array_flip($allowFields));

@@ -286,6 +286,45 @@ class User extends Api
     }
 
     /**
+     * 第三方授权(目前只是miniwechat授权更新用户资料)
+     *
+     * @return void
+     */
+    public function thirdauth()
+    {
+        $platform = $this->request->request("platform");
+        $encryptedData = $this->request->request('encryptedData');
+        $iv = $this->request->request('iv');
+        $config = get_addon_config('third');
+        if (!$config || !isset($config[$platform]))
+        {
+            $this->error(__('Invalid parameters'));
+        }
+        if(!$encryptedData || !$iv){
+            $this->error(__('Miss important parameters'));
+        }
+        $user = $this->auth->getUser();
+        $sessionKey = \addons\third\model\Third::getFieldByUserId($user->id, 'session_key');
+        if($sessionKey){
+            $app = new \addons\third\library\Application($config);
+            //小程序解密数据
+            $result = $app->{$platform}->decryptData(['encryptedData' => $encryptedData, 'iv' => $iv, 'sessionKey'=> $sessionKey]);
+            if($result){
+                $authret = \addons\third\library\Service::auth($platform, $result);
+                if ($authret)
+                {
+                    $data = [
+                        'userinfo'  => $this->auth->getUserinfo(true)
+                    ];
+                    $this->success(__('Auth information successful'), $data);
+                }
+            }
+        }
+        $this->error(__('Operation failed'));
+    }
+
+
+    /**
      * 重置密码
      * 
      * @param string $mobile 手机号

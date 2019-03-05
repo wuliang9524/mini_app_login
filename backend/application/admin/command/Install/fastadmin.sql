@@ -420,6 +420,9 @@ CREATE TABLE `fa_user` (
   `mobile` varchar(11) NOT NULL DEFAULT '' COMMENT '手机号',
   `avatar` varchar(255) NOT NULL DEFAULT '' COMMENT '头像',
   `level` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '等级',
+  `city` varchar(100) NOT NULL DEFAULT '' COMMENT '城市',
+  `province` varchar(100) NOT NULL DEFAULT '' COMMENT '省份',
+  `country` varchar(100) NOT NULL DEFAULT '' COMMENT '国家',
   `gender` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '性别',
   `birthday` date COMMENT '生日',
   `bio` varchar(100) NOT NULL DEFAULT '' COMMENT '格言',
@@ -448,7 +451,7 @@ CREATE TABLE `fa_user` (
 -- Records of fa_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `fa_user` VALUES (1, 1, 'admin', 'admin', 'c13f62012fd6a8fdf06b3452a94430e5', 'rpR6Bv', 'admin@163.com', '13888888888', '/assets/img/avatar.png', 0, 0, '2017-04-15', '', 0, 0, 1, 1, 1516170492, 1516171614, '127.0.0.1', 0, '127.0.0.1', 1491461418, 0, 1516171614, '', 'normal','');
+INSERT INTO `fa_user` VALUES (1, 1, 'admin', 'admin', 'c13f62012fd6a8fdf06b3452a94430e5', 'rpR6Bv', 'admin@163.com', '13888888888', '/assets/img/avatar.png', 0, 'Guangzhou', 'Guangdong', 'China', 0, '2017-04-15', '', 0, 0, 1, 1, 1516170492, 1516171614, '127.0.0.1', 0, '127.0.0.1', 1491461418, 0, 1516171614, '', 'normal','');
 COMMIT;
 
 -- ----------------------------
