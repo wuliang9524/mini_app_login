@@ -86,4 +86,44 @@ class Service
         }
     }
 
+    /**
+     * 用户授权更新用户资料
+     *
+     * @param [type] $platform
+     * @param array $params
+     * @return void
+     */
+    public static function auth($platform, $params = [])
+    {
+        $val = [
+            'openname'          => $params['openname'] ? $params['openname'] : '',
+            'appid'             => $params['appid'] ? $params['appid'] : '',
+            'watermark'         => $params['watermark'] ? $params['watermark'] : '',
+        ];
+
+        $third = Third::get(['platform' => $platform, 'openid' => $params['openid']]);
+        if ($third) {
+            $user = User::get($third['user_id']);
+            if ($user) {
+                Db::startTrans();
+                try {
+                    $third->save($val);
+
+                    $fields = ['nickname', 'avatar', 'gender', 'city', 'province', 'country'];
+                    $data = array_intersect_key($params, array_flip($fields));
+                    $user->save($data);
+                    Db::commit();
+                } catch (PDOException $e) {
+                    Db::rollback();
+                    return false;
+                }
+            } else {
+                //user不存在
+                // TODO
+            }
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -47,6 +47,29 @@ return array(
         'extend'  => '',
     ),
     array(
+        'name'    => 'miniwechat',
+        'title'   => '微信小程序',
+        'type'    => 'array',
+        'content' =>
+            array(
+                'app_id'     => '',
+                'app_secret' => '',
+                'callback'   => '',
+                'scope'      => 'snsapi_base',
+            ),
+        'value'   =>
+            array(
+                'app_id'     => '',
+                'app_secret' => '',
+                'scope'      => 'snsapi_base',
+            ),
+        'rule'    => 'required',
+        'msg'     => '',
+        'tip'     => '',
+        'ok'      => '',
+        'extend'  => '',
+    ),
+    array(
         'name'    => 'weibo',
         'title'   => '微博',
         'type'    => 'array',
