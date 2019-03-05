@@ -19,6 +19,7 @@ class Application
         'qq'     => 'Qq',
         'weibo'  => 'Weibo',
         'wechat' => 'Wechat',
+        'miniwechat' => 'MiniWechat',
     ];
 
     /**

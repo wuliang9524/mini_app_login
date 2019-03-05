@@ -414,7 +414,7 @@ class Auth
      * @param [Boolean] $force  是否强制刷新user模型
      * @return void
      */
-    public function getUserinfo($force)
+    public function getUserinfo($force = false)
     {
         if($force){
             $this->_user = User::get($this->_user->id);

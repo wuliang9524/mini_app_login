@@ -19,4 +19,4 @@ CREATE TABLE `__PREFIX__third` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `platform` (`platform`,`openid`),
   KEY `user_id` (`user_id`,`platform`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='第三方登录表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='第三方登录表';
