@@ -89,7 +89,7 @@ App({
       }).then(function(res) {
         return wxapi('request', {
           'method': 'POST',
-          'url': 'http://fastadmin/api/User/third',
+          'url': _this.gData.api.request + '/api/User/third',
           'header': {
             'Content-type': 'application/x-www-form-urlencoded',
           },
@@ -288,7 +288,7 @@ App({
     'userinfo': null, //用户信息(包含自定义登录态token)
 
     'api': {
-      'request': 'http://fastadmin',
+      'request': 'http://logindemo',
       'socket': '',
       'uploadfile': '',
       'downloadfile': ''
