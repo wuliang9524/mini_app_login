@@ -141,7 +141,6 @@ App({
           'iv': data.iv,
         }
       }).then(function(res) {
-        console.log(res);
         //当服务器内部错误500(或者其它目前我未知的情况)时，wx.request还是会执行success回调，所以这里还增加一层服务器返回的状态码的判断
         if (res.statusCode === 200 && res.data.code === 1) {
           //更新app.gData中的数据
