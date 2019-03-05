@@ -30,7 +30,6 @@ App({
         });
       }
     }).catch(function(error) {
-      console.error(error);
       wx.showModal({
         title: 'Error',
         content: error.errMsg,
@@ -100,7 +99,7 @@ App({
         })
       }).then(function(res) {
         //当服务器内部错误500(或者其它目前我未知的情况)时，wx.request还是会执行success回调，所以这里还增加一层服务器返回的状态码的判断
-        if (res.statusCode === 200 || res.data.code === 1) {
+        if (res.statusCode === 200 && res.data.code === 1) {
           //获取到自定义登录态信息后存入缓存，由于我们无需在意缓存是否成功(前面代码有相应的处理逻辑)，所以这里设置缓存可以由它异步执行即可
           wxapi('setStorage', {
             'key': loginKey,
@@ -110,7 +109,7 @@ App({
           resolve(res.data.data.userinfo);
         } else {
           return Promise.reject({
-            'errMsg': res.data.msg ? 'Api error:' + res.data.msg : 'Fail to network request!'
+            'errMsg': (res.data.msg ? 'ServerApi error:' + res.data.msg : 'Fail to network request!') + ' Please feedback to manager and close the miniprogram manually.'
           });
         }
       }).catch(function(error) {
@@ -163,7 +162,7 @@ App({
           resolve(res.data.data.userinfo);
         } else {
           return Promise.reject({
-            'errMsg': res.data.msg ? 'Api error:' + res.data.msg : 'Fail to network request!'
+            'errMsg': res.data.msg ? 'ServerApi error:' + res.data.msg : 'Fail to network request!'
           });
         }
       }).catch(function(error) {
@@ -250,7 +249,7 @@ App({
   pageGetLoginInfo: function(pageObj) {
     var _this = this;
     return new Promise((resolve, reject) => {
-      console.log(_this.gData.logined);
+      // console.log(_this.gData.logined);
       if (_this.gData.logined == true) {
         wxsetData(pageObj, {
           'logined': _this.gData.logined,
