@@ -14,10 +14,16 @@
 	4.	安装完成后登录后台管理，在左侧导航栏中点击 **插件管理**，然后点击上方的 **离线安装**，然后选择项目中的 `third-1.0.5.zip` 压缩包，完成离线安装插件。
 	5.	最后再到 **插件管理** 中的 **本地插件**，找到刚安装的 **第三方登录** 插件，点击右方操作 **配置** 按钮，在弹出框中 **微信小程序** 一栏输入自己的小程序app_id及app_secret，注意这里的app_id要与小程序前端中的appid一致。
 
+        ![后台安装](https://images.gitee.com/uploads/images/2019/0309/151602_994946f2_1349014.jpeg "后台安装向导.jpg")
+        ![离线安装插件](https://images.gitee.com/uploads/images/2019/0309/151803_31bcbb99_1349014.jpeg "离线安装插件.jpg")
+        ![配置插件](https://images.gitee.com/uploads/images/2019/0309/151855_8c208c0d_1349014.jpeg "配置插件信息.jpg")
+
 *	## 小程序前端
 	1.	在微信开发工具中导入项目，目录指向项目的 `frontend` 文件夹，并更改Appid为自己的小程序Appid。
 	2.	导入项目后，在app.js中修改 `gData.api.request` 域名为自己的后台站点域名。
 	3.	全部安装完成，体验即可。
+
+        ![导入小程序项目](https://images.gitee.com/uploads/images/2019/0309/151951_b9b7bdb3_1349014.jpeg "导入项目.jpg")
 	
 #	问题反馈
 
