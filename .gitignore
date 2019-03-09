@@ -3,3 +3,4 @@
 /backend/application/admin/command/Install/*.lock
 /backend/runtime/*
 /backend/.vscode
+/images/*
