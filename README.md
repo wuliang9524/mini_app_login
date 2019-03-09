@@ -36,9 +36,8 @@ TODO: 项目中设计的小程序登录实现的逻辑，以及用Promise对象�
 
 在使用中遇到任何问题，可以通过以下方式联系我：
 
-微信： 
-
-Q Q： 
+微信：  
+![微信名片](https://images.gitee.com/uploads/images/2019/0309/153306_cebe8bed_1349014.jpeg "wechatcard.jpg")
 
 Github: [https://github.com/wuliang9524/mini_app_login][github]
 
